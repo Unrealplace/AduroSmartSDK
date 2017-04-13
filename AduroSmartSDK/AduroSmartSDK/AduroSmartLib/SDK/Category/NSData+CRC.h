@@ -1,0 +1,15 @@
+//
+//  NSData+CRC.h
+//  AduroSmartFrameWork
+//
+//  Created by MacBook on 2017/4/12.
+//  Copyright © 2017年 Oliver. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface NSData (CRC)
++(unsigned short) crc16:(NSData *)data;
++(unsigned short) crc8:(NSData *)data;
+
+@end
