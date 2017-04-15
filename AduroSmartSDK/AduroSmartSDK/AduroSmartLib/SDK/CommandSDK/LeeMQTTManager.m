@@ -9,7 +9,6 @@
 #import "LeeMQTTManager.h"
 #import "MQTTKit.h"
 #import <UIKit/UIKit.h>
-#import "AppEnum.h"
 
 @interface LeeMQTTManager(){
     

@@ -13,4 +13,7 @@
 + (NSString *)getLocalIP;
 
 + (NSString *) getDeviceSSID;
+
++ (NSString *)getWifiName;
+
 @end

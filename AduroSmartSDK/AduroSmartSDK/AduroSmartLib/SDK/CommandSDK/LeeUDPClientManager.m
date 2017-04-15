@@ -1,17 +1,15 @@
 //
-//  LeeUDPManager.m
+//  LeeUDPClientManager.m
 //  AduroSmartSDK
 //
 //  Created by MacBook on 2017/4/12.
 //  Copyright © 2017年 Oliver. All rights reserved.
 //
 
-#import "LeeUDPManager.h"
-#import "AduroGCDAsyncUdpSocket.h"
-#import "AppEnum.h"
+#import "LeeUDPClientManager.h"
 #define CLIENTPORT 8665
 #define SERVERPORT 9600
-@interface LeeUDPManager()<GCDAsyncUdpSocketDelegate>{
+@interface LeeUDPClientManager()<GCDAsyncUdpSocketDelegate>{
     
     AduroUDPReceiveDataBlock  _receiveDataBlock;
     AduroUDPReceiveErrorBlock _errorBlock;
@@ -23,14 +21,14 @@
 
 @end
 
-@implementation LeeUDPManager
+@implementation LeeUDPClientManager
 
 +(instancetype)sharedManager{
     
-    static LeeUDPManager * client = nil;
+    static LeeUDPClientManager * client = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
-        client = [[LeeUDPManager alloc] init];
+        client = [[LeeUDPClientManager alloc] init];
     });
     return client;
     

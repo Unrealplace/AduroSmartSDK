@@ -7,17 +7,13 @@
 //
 
 #import "DeviceManager.h"
-#import "LeeUDPManager.h"
+#import "LeeUDPClientManager.h"
 #import "LeeMQTTManager.h"
-#import "AppEnum.h"
-#import "AduroGlobalData.h"
 
 @interface DeviceManager(){
-
+    
     GetDevicesBlock _udpDevices;
     GetDevicesBlock _mqttDevices;
-    
-
 }
 @end
 @implementation DeviceManager
@@ -43,6 +39,8 @@
 
 }
 
+
+
 -(void)sendData:(NSData*)data{
 
     if (IsRemoteConnect) {
@@ -58,16 +56,19 @@
     }else{
     
         NSString * dataStr = [NSString stringWithFormat:@"good %d",arc4random()];
-        [[LeeUDPManager sharedManager] sendData:[dataStr dataUsingEncoding:NSUTF8StringEncoding] andReceiveData:^(NSData *data) {
+        [[LeeUDPClientManager sharedManager] sendData:[dataStr dataUsingEncoding:NSUTF8StringEncoding] andReceiveData:^(NSData *data) {
             
-            AduroDevice * dev = [[AduroDevice alloc] init];
-            dev.data =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            _udpDevices(dev);
+            if ([[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] hasPrefix:@"oliver"])   {
+                AduroDevice * dev = [[AduroDevice alloc] init];
+                dev.data =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                _udpDevices(dev);
+            }
+            
         } andError:^(NSError *error) {
             
         }];
     }
-    IsRemoteConnect = !IsRemoteConnect;
+//    IsRemoteConnect = !IsRemoteConnect;
     
 }
 @end

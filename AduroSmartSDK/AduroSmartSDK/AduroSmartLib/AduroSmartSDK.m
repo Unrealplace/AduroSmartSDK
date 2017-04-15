@@ -7,16 +7,14 @@
 //
 
 #import "AduroSmartSDK.h"
-#import "LeeUDPManager.h"
+#import "LeeUDPClientManager.h"
 #import "LeeMQTTManager.h"
 #import "AduroRealReachability.h"
-#import "AppEnum.h"
-#import "AduroGlobalData.h"
-
+#import "AduroGateway.h"
 
 @interface AduroSmartSDK()<mqttConnectDelegate>
 
-@property(nonatomic,strong)LeeUDPManager * udpClient;
+@property(nonatomic,strong)LeeUDPClientManager * udpClient;
 @property(nonatomic,strong)LeeMQTTManager* mqttClient;
 @property(nonatomic,strong)AduroRealReachability * netWorkManager;
 
@@ -37,17 +35,26 @@
 
     if (self =[super init]) {
         [self startUDPClient];
-        [self startMQTTClient];
+//        [self startMQTTClient];
         
     }
     return self;
 }
 -(void)startUDPClient{
     
-    _udpClient = [LeeUDPManager sharedManager];
+    _udpClient         = [LeeUDPClientManager sharedManager];
     _udpClient.udpPort = BROADCAST_PORT;
     [_udpClient startUDPClientWithFeedBackBlock:^(NSData *data) {
-        DLog(@"back-->>%@",data);
+       
+        if (![[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] hasPrefix:@"oliver"])   {
+            NSDictionary * dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            AduroGateway * gateway = [[AduroGateway alloc] init];
+            gateway.gatewayID = dataDic[@"gatewayID"];
+            gateway.gatewayName = dataDic[@"gatewayName"];
+            gateway.gatewayIPv4Address = dataDic[@"gatewayIPv4Address"];
+            [Lee_Notification postNotificationName:GET_GATEWAY object:gateway];
+        }
+        
     } andError:^(NSError *error) {
         DLog(@"back-->>%@",error);
     }];
@@ -55,7 +62,7 @@
 }
 -(void)startMQTTClient{
     
-    _mqttClient = [LeeMQTTManager sharedManager];
+    _mqttClient       = [LeeMQTTManager sharedManager];
     _mqttClient.topic = @"B9A6ED6F2DE115BC";
     if (![_mqttClient mqttConnect]) {
         _mqttClient.delegate = self;
@@ -65,7 +72,6 @@
             if (code == AduroSmartLinkSuccess) {
                 IsRemoteConnect = YES;
             }else{
-            
                 IsRemoteConnect = NO;
             }
         } andReceiveDataBlock:^(id data) {
@@ -75,6 +81,7 @@
         }];
     }
 }
+
 
 -(void)receiveMqttMsg:(id)data{
 //    MLog(@"%@",data);

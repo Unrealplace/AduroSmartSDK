@@ -6,10 +6,9 @@
 //  Copyright © 2017年 Oliver. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "LeeCommonObject.h"
 
-
-@interface AduroSmartSDK : NSObject
+@interface AduroSmartSDK : LeeCommonObject
 
 +(AduroSmartSDK*)sharedManager;
 

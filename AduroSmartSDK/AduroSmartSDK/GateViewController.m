@@ -7,11 +7,16 @@
 //
 
 #import "GateViewController.h"
-
+#import "LeeTCPClientManager.h"
 
 @interface GateViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView * gateWayTableView;
 @property(nonatomic,strong)NSMutableArray * gateWayArr;
+@property(nonatomic,strong)UIButton * tcpClientBtn;
+@property(nonatomic,strong)UILabel  *sendLable;
+@property(nonatomic,strong)UILabel  *revLabel;
+@property(nonatomic,strong)LeeTCPClientManager * tcpManager;
+
 @end
 
 @implementation GateViewController
@@ -20,7 +25,44 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor purpleColor];
     self.title   = @"gateway";
-    [self.view addSubview:self.gateWayTableView];
+//    [self.view addSubview:self.gateWayTableView];
+    
+    self.tcpClientBtn = [UIButton new];
+    self.sendLable = [UILabel new];
+    self.revLabel = [UILabel new];
+    [self.view addSubview:self.tcpClientBtn];
+    [self.view addSubview:self.sendLable];
+    [self.view addSubview:self.revLabel];
+    
+    self.tcpClientBtn.frame = CGRectMake(100, 100, 100, 100);
+    self.sendLable.frame = CGRectMake(100, 220, 200, 30);
+    self.revLabel.frame = CGRectMake(100, 270, 200, 30);
+    
+    self.tcpClientBtn.backgroundColor = [UIColor redColor];
+    self.sendLable.backgroundColor = [UIColor greenColor];
+    self.revLabel.backgroundColor = [UIColor greenColor];
+    
+    [self.tcpClientBtn addTarget:self action:@selector(tcpClientBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    self.tcpManager = [LeeTCPClientManager sharedManager];
+    
+    [self.tcpManager startTCPClientWithHost:@"192.168.1.100" andPort:9600];
+    
+    
+}
+
+-(void)tcpClientBtnClick{
+
+    NSString * data = [NSString stringWithFormat:@"hello server %d",arc4random()];
+    
+    [self.tcpManager sendData:[data dataUsingEncoding:NSUTF8StringEncoding] WithReciveDataBlock:^(id data) {
+        DLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    } andError:^(NSError *error) {
+        DLog(@"%@",error);
+        
+    }];
+    
     
 }
 -(void)viewWillAppear:(BOOL)animated{

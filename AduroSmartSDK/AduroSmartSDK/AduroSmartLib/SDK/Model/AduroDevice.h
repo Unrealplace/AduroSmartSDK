@@ -6,8 +6,7 @@
 //  Copyright © 2017年 Oliver. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
+#import "LeeCommonObject.h"
 @interface AduroDevice : NSObject
 
 @property(nonatomic,copy)NSString * data;
