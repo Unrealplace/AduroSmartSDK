@@ -10,4 +10,8 @@
 
 @interface LeeUDPServerManager : LeeCommonObject
 
+-(void)startUDPServerWithPort:(uint16_t)port;
+-(void)sendBroadCast;
+- (void)sendCommandAndRecieveData:(LeeGetDataBlock) udpServerGetDataBlock;
+
 @end

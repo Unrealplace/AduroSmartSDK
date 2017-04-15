@@ -18,6 +18,7 @@
 @property(nonatomic,strong)AduroGCDAsyncSocket * tcpClient;
 @property(nonatomic,assign)NSInteger  pushCount;
 @property(nonatomic,strong)NSTimer   * connectTimer;
+@property(nonatomic,strong)NSTimer   * heartTimer;
 @property(nonatomic,assign)NSInteger  reconnectCount;
 @property(nonatomic,copy)NSString * host;
 @property(nonatomic,assign)uint16_t port;
@@ -69,6 +70,10 @@
         _port = port;
         _tcpClient.delegate = nil;
         _tcpClient=nil;
+        [_connectTimer invalidate];
+        [_heartTimer invalidate];
+        _heartTimer = nil;
+        _connectTimer = nil;
         _tcpClient = [[AduroGCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_queue_create(0, 0)];
         self.commentResult = [_tcpClient connectToHost:host onPort:port error:&error];
         if (self.commentResult) {
@@ -88,7 +93,10 @@ void dispatch_after( dispatch_time_t when, dispatch_queue_t queue, dispatch_bloc
 
 -(void)sendHeartBeat{
 
-    
+    dispatch_async(dispatch_queue_create(0, 0), ^{
+        [_tcpClient writeData:[@"heloo heart beat" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1 tag:100];
+        [_tcpClient readDataWithTimeout:-1 tag:200];
+    });    
 }
 -(void)reconnectServer{
     
@@ -114,6 +122,8 @@ void dispatch_after( dispatch_time_t when, dispatch_queue_t queue, dispatch_bloc
     self.reconnectCount = 0;
     [self.connectTimer invalidate];
     self.connectTimer = nil;
+    [self.heartTimer invalidate];
+    self.heartTimer = nil;
     [self.tcpClient disconnect];
     
 }
@@ -132,14 +142,24 @@ void dispatch_after( dispatch_time_t when, dispatch_queue_t queue, dispatch_bloc
 #pragma mark TCP对象的代理方法 
 -(void)socket:(AduroGCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port{
 
+    DLog(@"%@",[NSThread currentThread]);
     _tcpConnect = [_tcpClient isConnected];
     DLog(@"已经连接到%@",host);
-    [sock readDataWithTimeout:-1 tag:200];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [self.heartTimer invalidate];
+        self.heartTimer = nil;
+        self.heartTimer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(sendHeartBeat) userInfo:nil repeats:YES];
+        [self.heartTimer fire];
+    });
+    
+    
 }
 -(void)socket:(AduroGCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
     
     DLog(@"接收到Server数据%@地址%@",data,[sock connectedHost]);
+    if (_DataBlock) {
     _DataBlock(data);
+    }
     [sock readDataWithTimeout:-1 tag:200];
     self.pushCount++;
 }
@@ -149,8 +169,10 @@ void dispatch_after( dispatch_time_t when, dispatch_queue_t queue, dispatch_bloc
 }
 
 -(void)socketDidDisconnect:(AduroGCDAsyncSocket *)sock withError:(NSError *)err{
-    DLog(@"网络连接断开%@",err);
+    DLog(@"网络连接断开%@，and %@",err,sock);
     self.pushCount = 0;
+    [self.heartTimer invalidate];
+    self.heartTimer = nil;
     _tcpConnect = [_tcpClient isConnected];
     if (_ErrorBlock) {
     _ErrorBlock(err);

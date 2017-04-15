@@ -12,11 +12,15 @@
 
     AduroGCDAsyncSocket * _serverSocket;
     AduroGCDAsyncSocket * _newSocket;
+    LeeGetDataBlock    _serverDataBlock;
+
 }
 @end
 @implementation LeeTCPServerManager
--(void)startServerOnPort:(uint16_t)port{
+-(void)startServerOnPort:(uint16_t)port andRecieveData:(LeeGetDataBlock)serverGetDataBlock{
     NSError * error = nil;
+    _serverDataBlock = serverGetDataBlock;
+
     _serverSocket = [[AduroGCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_queue_create(0, 0)];
     BOOL result = [_serverSocket acceptOnPort:port error:&error];
     if (result) {
@@ -37,6 +41,7 @@
 -(void)socket:(AduroGCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
     DLog(@"%ld,接收到%@发来的数据%@",tag,[sock connectedAddress],[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
     [_newSocket readDataWithTimeout:-1 tag:0];
+    _serverDataBlock(data);
     [_newSocket writeData:data withTimeout:-1 tag:0];
 }
 

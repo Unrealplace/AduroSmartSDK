@@ -44,7 +44,7 @@
     
     [self.tcpClientBtn addTarget:self action:@selector(tcpClientBtnClick) forControlEvents:UIControlEventTouchUpInside];
     
-    
+
     self.tcpManager = [LeeTCPClientManager sharedManager];
     
     [self.tcpManager startTCPClientWithHost:@"192.168.1.100" andPort:9600];
@@ -53,11 +53,17 @@
 }
 
 -(void)tcpClientBtnClick{
+    __weak typeof(self) weakSelf = self;
 
     NSString * data = [NSString stringWithFormat:@"hello server %d",arc4random()];
     
     [self.tcpManager sendData:[data dataUsingEncoding:NSUTF8StringEncoding] WithReciveDataBlock:^(id data) {
         DLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            weakSelf.revLabel.text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+  
+        });
+        
     } andError:^(NSError *error) {
         DLog(@"%@",error);
         

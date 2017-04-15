@@ -10,6 +10,6 @@
 
 @interface LeeTCPServerManager : LeeCommonObject
 
--(void)startServerOnPort:(uint16_t)port;
+-(void)startServerOnPort:(uint16_t)port andRecieveData:(LeeGetDataBlock) serverGetDataBlock;
 
 @end
