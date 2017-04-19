@@ -7,14 +7,13 @@
 //
 
 #import "LeeUDPClientManager.h"
-#define CLIENTPORT 8665
-#define SERVERPORT 9600
+
 @interface LeeUDPClientManager()<GCDAsyncUdpSocketDelegate>{
     
-    AduroUDPReceiveDataBlock  _receiveDataBlock;
-    AduroUDPReceiveErrorBlock _errorBlock;
-    AduroUDPReceiveDataBlock  _startUDPDataBlock;
-    AduroUDPReceiveErrorBlock _startUDPErrorBlock;
+    LeeAduroUDPReceiveDataBlock  _receiveDataBlock;
+    LeeAduroUDPReceiveErrorBlock _errorBlock;
+    LeeAduroUDPReceiveDataBlock  _startUDPDataBlock;
+    LeeAduroUDPReceiveErrorBlock _startUDPErrorBlock;
     
 }
 @property (nonatomic,strong)AduroGCDAsyncUdpSocket * UDPClient;
@@ -33,7 +32,7 @@
     return client;
     
 }
--(BOOL)startUDPClientWithFeedBackBlock:(AduroUDPReceiveDataBlock)receiveDataBlock andError:(AduroUDPReceiveErrorBlock)errorBlock{
+-(BOOL)startUDPClientWithFeedBackBlock:(LeeAduroUDPReceiveDataBlock)receiveDataBlock andError:(LeeAduroUDPReceiveErrorBlock)errorBlock{
     
     BOOL bindResult = NO;
     NSError * error;
@@ -55,7 +54,7 @@
     return bindResult;
 }
 
--(void)sendData:(NSData*)commandData andReceiveData:(AduroUDPReceiveDataBlock)receiveDataBlock andError:(AduroUDPReceiveErrorBlock)errorBlock{
+-(void)sendData:(NSData*)commandData andReceiveData:(LeeAduroUDPReceiveDataBlock)receiveDataBlock andError:(LeeAduroUDPReceiveErrorBlock)errorBlock{
     
     @try {
         if (_receiveDataBlock==nil) {
@@ -97,8 +96,7 @@
 
 
 - (void)udpSocket:(AduroGCDAsyncUdpSocket *)sock didNotConnect:(NSError * _Nullable)error{
-    
-//    NSLog(@"not connect--->>>%@",error);
+
     if (_errorBlock) {
         _errorBlock(error);
     }
@@ -139,11 +137,12 @@ withFilterContext:(nullable id)filterContext{
     self.host    = [AduroGCDAsyncUdpSocket hostFromAddress:address];
     self.udpPort = [AduroGCDAsyncUdpSocket portFromAddress:address];
     
+    NSDictionary * dataDic = @{@"gateway":data};
     if (_receiveDataBlock) {
-        _receiveDataBlock(data);
+        _receiveDataBlock(dataDic);
     }
     if (_startUDPDataBlock) {
-        _startUDPDataBlock(data);
+        _startUDPDataBlock(dataDic);
     }
     self.udpConnect = YES;
 }

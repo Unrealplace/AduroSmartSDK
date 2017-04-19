@@ -15,6 +15,7 @@
 #define Lee_Stau @"Status"
 #define Lee_Userdefault   [NSUserDefaults standardUserDefaults]
 
+AppDelegate * appdelegate;
 @interface AppDelegate ()
 @property(nonatomic,strong)ASBaseTabBarController * baseTabBar;
 
@@ -25,6 +26,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    appdelegate = self;
+    
     [AduroSmartSDK sharedManager];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

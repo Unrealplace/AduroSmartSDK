@@ -22,6 +22,7 @@
 @property(nonatomic,strong)UILabel  * backCommondLabel;
 @property(nonatomic,strong)UILabel  * sendLabel;
 @property(nonatomic,strong)UILabel  * receiveLable;
+@property(nonatomic,strong)AduroGateway * gateWay;
 
 
 @end
@@ -95,6 +96,12 @@
     [self.view addSubview:self.gateLabel];
     self.gateLabel.font = [UIFont systemFontOfSize:9];
     
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
+    tap.numberOfTapsRequired = 1;
+    [self.gateLabel addGestureRecognizer:tap];
+    self.gateLabel.userInteractionEnabled = YES;
+    
+    
     
 }
 
@@ -129,8 +136,16 @@
             dispatch_async(dispatch_get_main_queue(), ^{
 
                 self.gateLabel.text = [NSString stringWithFormat:@"%@:%@",[gateways[0] gatewayName],[gateways[0] gatewayIPv4Address]];
+                self.gateWay = gateways[0];
             });
         }
+    }];
+}
+-(void)tapClick:(UITapGestureRecognizer*)tap{
+
+    [[GatewayManager sharedManager] connectGateway:self.gateWay andReturnCode:^(AduroSmartReturnCode code) {
+        
+        DLog(@"link:::%ld",code);
     }];
 }
 - (void)didReceiveMemoryWarning {

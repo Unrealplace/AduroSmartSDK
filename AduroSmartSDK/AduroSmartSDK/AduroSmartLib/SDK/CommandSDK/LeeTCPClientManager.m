@@ -55,9 +55,7 @@
     [self cutOffSocket];
 }
 -(void)tcpEnterForGround{
-
     [self reconnectServer];
-    
 }
 
 -(BOOL)startTCPClientWithHost:(NSString *)host andPort:(uint16_t)port{
@@ -87,10 +85,11 @@
         return NO;
     }
    
-    
 }
-void dispatch_after( dispatch_time_t when, dispatch_queue_t queue, dispatch_block_t block);
 
+/**
+ 发送心跳包
+ */
 -(void)sendHeartBeat{
 
     dispatch_async(dispatch_queue_create(0, 0), ^{
@@ -98,6 +97,10 @@ void dispatch_after( dispatch_time_t when, dispatch_queue_t queue, dispatch_bloc
         [_tcpClient readDataWithTimeout:-1 tag:200];
     });    
 }
+
+/**
+ 重新连接服务器
+ */
 -(void)reconnectServer{
     
     self.pushCount = 0;
@@ -106,23 +109,26 @@ void dispatch_after( dispatch_time_t when, dispatch_queue_t queue, dispatch_bloc
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [_tcpClient connectToHost:self.host onPort:self.port error:&error];
         if (error) {
-            DLog(@"连接出错%@",error);
+            DLog(@"连接出错%@",error);//这里可能不在一个局域网的时候有问题
+        }
+        if ((self.host.length>0) &&(self.port>10)) {
+            DLog(@"自动重连中...ip::%@ and port::%hu",self.host,self.port);
+            
         }
     });
-    if ((self.host.length>0) &&(self.port>10)) {
-        DLog(@"自动重连中...ip::%@ and port::%hu",self.host,self.port);
-   
-    }
 
-   
 }
+
+/**
+ 切断socket连接
+ */
 -(void)cutOffSocket{
     
     self.pushCount = 0;
     self.reconnectCount = 0;
     [self.connectTimer invalidate];
-    self.connectTimer = nil;
     [self.heartTimer invalidate];
+    self.connectTimer = nil;
     self.heartTimer = nil;
     [self.tcpClient disconnect];
     
@@ -142,7 +148,6 @@ void dispatch_after( dispatch_time_t when, dispatch_queue_t queue, dispatch_bloc
 #pragma mark TCP对象的代理方法 
 -(void)socket:(AduroGCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port{
 
-    DLog(@"%@",[NSThread currentThread]);
     _tcpConnect = [_tcpClient isConnected];
     DLog(@"已经连接到%@",host);
     dispatch_sync(dispatch_get_main_queue(), ^{
@@ -151,7 +156,6 @@ void dispatch_after( dispatch_time_t when, dispatch_queue_t queue, dispatch_bloc
         self.heartTimer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(sendHeartBeat) userInfo:nil repeats:YES];
         [self.heartTimer fire];
     });
-    
     
 }
 -(void)socket:(AduroGCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
@@ -169,14 +173,11 @@ void dispatch_after( dispatch_time_t when, dispatch_queue_t queue, dispatch_bloc
 }
 
 -(void)socketDidDisconnect:(AduroGCDAsyncSocket *)sock withError:(NSError *)err{
-    DLog(@"网络连接断开%@，and %@",err,sock);
+    DLog(@"网络连接断开--->%@ and---> %@",err,sock.userData);
     self.pushCount = 0;
     [self.heartTimer invalidate];
     self.heartTimer = nil;
     _tcpConnect = [_tcpClient isConnected];
-    if (_ErrorBlock) {
-    _ErrorBlock(err);
-    }
     if ([[Lee_Userdefault valueForKey:@"Status"] isEqualToString:@"foreground"]) {
         self.reconnectCount++;
         [self.connectTimer invalidate];
@@ -184,6 +185,9 @@ void dispatch_after( dispatch_time_t when, dispatch_queue_t queue, dispatch_bloc
         NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(reconnectServer) userInfo:nil repeats:NO];
         self.connectTimer = timer;
         [self.connectTimer fire];
+    }
+    if (_ErrorBlock) {
+        _ErrorBlock(err);
     }
      
 }

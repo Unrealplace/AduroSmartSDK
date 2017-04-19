@@ -9,8 +9,6 @@
 
 #import "LeeCommonObject.h"
 
-typedef void (^AduroUDPReceiveDataBlock)(NSData*data);
-typedef void (^AduroUDPReceiveErrorBlock)(NSError*error);
 
 @interface LeeUDPClientManager : LeeCommonObject
 
@@ -20,7 +18,7 @@ typedef void (^AduroUDPReceiveErrorBlock)(NSError*error);
 
 +(instancetype)sharedManager;
 -(void)closeUDPClient; 
--(BOOL)startUDPClientWithFeedBackBlock:(AduroUDPReceiveDataBlock)receiveDataBlock andError:(AduroUDPReceiveErrorBlock) errorBlock;
--(void)sendData:(NSData*)commandData andReceiveData:(AduroUDPReceiveDataBlock) receiveDataBlock andError:(AduroUDPReceiveErrorBlock) errorBlock;
+-(BOOL)startUDPClientWithFeedBackBlock:(LeeAduroUDPReceiveDataBlock)receiveDataBlock andError:(LeeAduroUDPReceiveErrorBlock) errorBlock;
+-(void)sendData:(NSData*)commandData andReceiveData:(LeeAduroUDPReceiveDataBlock) receiveDataBlock andError:(LeeAduroUDPReceiveErrorBlock) errorBlock;
 
 @end
