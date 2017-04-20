@@ -9,5 +9,8 @@
 #import "AduroDataTool.h"
 
 @implementation AduroDataTool
++(NSData*)getTheData:(NSData *)data{
 
+    return nil;
+}
 @end

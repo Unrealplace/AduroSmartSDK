@@ -10,4 +10,6 @@
 
 @interface AduroDataTool : LeeCommonObject
 
++(NSData*)getTheData:(NSData*)data;
+
 @end

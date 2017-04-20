@@ -18,7 +18,6 @@
     DLog(@"%@",data);
     
     NSData * gatedata =  data[@"gateway"];
-    
     if (gatedata != nil) {
         NSString * gateStr = [[NSString alloc] initWithData:gatedata encoding:NSUTF8StringEncoding];
         if (![gateStr hasPrefix:@"oliver"]) {
@@ -31,6 +30,8 @@
             [Lee_Notification postNotificationName:Lee_GET_GATEWAY object:gateway];
         }else{
             DLog(@"局域网反馈的数据::%@",gateStr);
+            [AduroDataTool getTheData:nil];
+            
             [Lee_Notification postNotificationName:Lee_FIND_DEVICE object:nil];
             
         }

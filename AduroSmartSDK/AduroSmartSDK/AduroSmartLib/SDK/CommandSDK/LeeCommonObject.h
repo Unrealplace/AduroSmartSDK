@@ -31,16 +31,18 @@
 #define Lee_MQTT_HOST @"data.adurosmart.com"
 #define Lee_LINE_HOST @"www.microsoft.com"
 #define Lee_GET_GATEWAY @"getgateway"
+#define Lee_CONNECT_GATEWAT @"connectgateway"
 #define Lee_Staus @"Statu"
 #define Lee_Local_or_Remote @"local_or_remote"
 #define Lee_Net_Not_Reach   @"not reach"
 #define Lee_FIND_DEVICE @"findDevice"
 #define Lee_SAVE_GATEWAY  @"gatewayObject"
 
+
+
 typedef enum:NSInteger{
     AduroSmartLinkFailed,
     AduroSmartLinkSuccess
-    
 }AduroSmartLinkCode;
 
 

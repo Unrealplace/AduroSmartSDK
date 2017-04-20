@@ -40,6 +40,8 @@
     if (self) {
         [Lee_Notification addObserver:self selector:@selector(localOrRemote) name:Lee_Local_or_Remote object:nil];
         [Lee_Notification addObserver:self selector:@selector(getGateWay:) name:Lee_GET_GATEWAY object:nil];
+        [Lee_Notification addObserver:self selector:@selector(connectGateway:) name:Lee_CONNECT_GATEWAT object:nil];
+        
         udpClient  = [LeeUDPClientManager sharedManager];
         mqttClient = [LeeMQTTClientManager sharedManager];
 
@@ -58,9 +60,10 @@
 }
 -(void)getGateWay:(NSNotification*)nofi{
     AduroGateway * obj = (AduroGateway*)nofi.object;
-    
     _allGetGatewayBlock(@[obj]);
 }
+
+
 
 -(void)connectGateway:(AduroGateway *)gateway andReturnCode:(LeeGatewayStatusBlock)completionHandler{
     
@@ -129,6 +132,10 @@
     [self updateGatewayDatatime:[NSDate date]];
     
 }
+-(void)connectGateway:(NSNotification*)noti{
+
+    
+}
 -(AduroGateway*)getCurrentGateway{
 
     NSData *myEncodedObject = [Lee_Userdefault objectForKey:Lee_SAVE_GATEWAY];
@@ -156,7 +163,6 @@
 -(void)resetGatewayWithPwd:(NSString *)password andCompletionHandler:(LeeGatewayStatusBlock)completionHandler{
     _resetGateWayBlock = completionHandler;
 
-    
 }
 
 -(void)updateGatewayDatatime:(NSDate *)date{
