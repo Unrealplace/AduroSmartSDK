@@ -72,6 +72,7 @@
 		FA11183A1EA70926005A3DE9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1118391EA70926005A3DE9 /* Reachability.m */; };
 		FA5A1F981EA79A96004C453C /* AduroSmartSDK+AnalysisData.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5A1F971EA79A96004C453C /* AduroSmartSDK+AnalysisData.m */; };
 		FA5A1F9B1EA7B213004C453C /* AduroDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5A1F9A1EA7B213004C453C /* AduroDataTool.m */; };
+		FAA0A4651EA9A8B700B49C4E /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0A4641EA9A8B700B49C4E /* UserModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,6 +202,8 @@
 		FA5A1F971EA79A96004C453C /* AduroSmartSDK+AnalysisData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AduroSmartSDK+AnalysisData.m"; sourceTree = "<group>"; };
 		FA5A1F991EA7B213004C453C /* AduroDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AduroDataTool.h; sourceTree = "<group>"; };
 		FA5A1F9A1EA7B213004C453C /* AduroDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AduroDataTool.m; sourceTree = "<group>"; };
+		FAA0A4631EA9A8B700B49C4E /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		FAA0A4641EA9A8B700B49C4E /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +295,8 @@
 				FA1118361EA6F1E4005A3DE9 /* NetTypeModel.m */,
 				FA5A1F991EA7B213004C453C /* AduroDataTool.h */,
 				FA5A1F9A1EA7B213004C453C /* AduroDataTool.m */,
+				FAA0A4631EA9A8B700B49C4E /* UserModel.h */,
+				FAA0A4641EA9A8B700B49C4E /* UserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -617,6 +622,7 @@
 				FA084A831E9F09BE009B98AE /* AduroGateway.m in Sources */,
 				FA1118371EA6F1E4005A3DE9 /* NetTypeModel.m in Sources */,
 				FA084A3E1E9E2623009B98AE /* AduroGCDAsyncUdpSocket.m in Sources */,
+				FAA0A4651EA9A8B700B49C4E /* UserModel.m in Sources */,
 				FA084A091E9E261B009B98AE /* AduroReachStateWWAN.m in Sources */,
 				FA084A771E9E5DD6009B98AE /* DeviceManager.m in Sources */,
 				FA084A451E9E2623009B98AE /* mosquitto.c in Sources */,
