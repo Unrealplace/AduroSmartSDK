@@ -55,12 +55,12 @@ typedef enum: NSInteger{
 
 typedef enum: NSUInteger{
     //照明设备
-    AduroDeviceTypeON_OFF_LIGHT = 0x0000,//开关灯 On/off light
-    AduroDeviceTypeON_OFF_SOCKET = 0x0010,//开关插座 On/off plug-in unit
-    AduroDeviceTypeDIMMABLE_LIGHT = 0x0100,//调光灯 Dimmable light
+    AduroDeviceTypeON_OFF_LIGHT    = 0x0000,//开关灯 On/off light
+    AduroDeviceTypeON_OFF_SOCKET   = 0x0010,//开关插座 On/off plug-in unit
+    AduroDeviceTypeDIMMABLE_LIGHT  = 0x0100,//调光灯 Dimmable light
     AduroDeviceTypeDIMMABLE_SOCKET = 0x0110,//调光插座 Dimmable plug-in unit
     AduroDeviceTypeCOLOR_TEM_LIGHT = 0x0220,//色温灯 Color temperature light
-    AduroDeviceTypeETC_LIGHT = 0x0210,//扩展彩色灯 Extended color light
+    AduroDeviceTypeETC_LIGHT   = 0x0210,//扩展彩色灯 Extended color light
     AduroDeviceTypeCOLOR_LIGHT = 0x0200,//彩色灯 Color light
     //控制设备
     AduroDeviceTypeCRT_CTR = 0x0202,//窗帘
@@ -72,12 +72,60 @@ typedef enum: NSUInteger{
     AduroDeviceTypeOOS_CTR = 0x0850,//遥控器On/off sensor
     //传感器设备
     AduroDeviceTypeDOOR_CONTANCT = 0x4215,//门磁
-    AduroDeviceTypePIR_CONTANCT = 0x420d,//PIR
+    AduroDeviceTypePIR_CONTANCT  = 0x420d,//PIR
     AduroDeviceTypePM25_SEN = 0x0309,//PM2.5
-    AduroDeviceTypeSMK_SEN = 0x0310 //烟雾传感器
+    AduroDeviceTypeSMK_SEN  = 0x0310 //烟雾传感器
     
 }AduroDeviceType;
 
+typedef enum :NSUInteger{
+
+    AduroProfileIDAUTO    = 0x0104,//家居自动化
+    AduroProfileIDLink    = 0xc05e,//灯链路
+    AduroProfileIDPLANT   = 0x0101,//植物监测
+    AduroProfileIDBUILD   = 0x0105,//楼宇自动化
+    AduroProfileIDTELECOM = 0x0107,//电信应用
+    AduroProfileIDPERSON  = 0x0108,//家庭护理
+    AduroProfileIDADVANCE = 0x0109 //计量倡议
+    
+}AduroProfileID;
+
+typedef enum: NSUInteger{
+
+    AduroGroupTypeLivingRoom  = 0x01,//客厅
+    AduroGroupTypeKitchenRoom = 0x02,//厨房
+    AduroGroupTypeBedRoom     = 0x03,//卧室
+    AduroGroupTypeBathRoom    = 0x04,//浴室
+    AduroGroupTypeRestaurantRoom = 0x05,//餐厅
+    AduroGroupTypeToiletRoom  = 0x06,//厕所
+    AduroGroupTypeOfficeRoom  = 0x07,//办公室
+    AduroGroupTypeHallwayRoom = 0x08,//走廊
+    AduroGroupTypeStudyRoom   = 0x09,//书房
+    AduroGroupTypeBalconyRoom = 0x0a,//阳台
+    AduroGroupTypeOtherRoom   = 0x0b//其它
+    
+}AduroGroupType;
+
+typedef enum :NSUInteger{
+    
+    AduroSceneTypeLivingRoom = 0x01,//离家
+    AduroSceneTypeComingRoom = 0x02,//回家
+    AduroSceneTypeWakeUp     = 0x03,//起床
+    AduroSceneTypeSleep      = 0x04,//睡觉
+    AduroSceneTypeHaveDinner = 0x05,//吃饭
+    AduroSceneTypeReading    = 0x06,//阅读
+    AduroSceneTypeWatchingTV = 0x07,//看电视
+    AduroSceneTypeParty      = 0x08,//聚会
+    AduroSceneTypeOther      = 0x09//其他
+    
+}AduroSceneType;
+
+typedef enum :NSUInteger{
+
+    AduroTaskTypeTimer = 0x00,//时间触发
+    AduroTaskTypeThing = 0x01//事件触发
+    
+}AduroTaskType;
 
 typedef enum:NSUInteger{
     GateWayBackCodeACK_SUC_RTN = 0x00, //成功
@@ -95,12 +143,12 @@ typedef enum:NSUInteger{
 }GateWayBackCode;
 
 typedef enum : NSUInteger {
-    AduroSmartReturnCodeError = 0x0001,
-    AduroSmartReturnCodeSuccess = 0x0002,
+    AduroSmartReturnCodeError    = 0x0001,
+    AduroSmartReturnCodeSuccess  = 0x0002,
     AduroSmartReturnCodeNoAccess = 0x0003,
     AduroSmartReturnCodeDeviceNameLengthError = 0x0004,
-    AduroSmartReturnCodeTaskNameLengthError = 0x0005,
-    AduroSmartReturnCodeTaskInfoNotAvailable = 0x0006,
+    AduroSmartReturnCodeTaskNameLengthError   = 0x0005,
+    AduroSmartReturnCodeTaskInfoNotAvailable  = 0x0006,
     AduroSmartReturnCodeNetError = 0x0007
 } AduroSmartReturnCode;
 
@@ -156,10 +204,17 @@ typedef void (^LeeAduroMQTTGetErrorBlock)(NSError*error);
 typedef void (^LeeAduroMQTTLinkSuccessBlock)(AduroSmartLinkCode code);
 
 
+typedef void (^LeeDeviceStatusBlock)(AduroSmartReturnCode code);
+typedef void (^LeeGroupStatusBlock)(AduroSmartReturnCode code);
+typedef void (^LeeSceneStatusBlock)(AduroSmartReturnCode code);
+typedef void (^LeeTaskStatusBlock)(AduroSmartReturnCode code);
+
+typedef void (^LeeUserStatusBlock)(AduroSmartReturnCode code);
+
 /**
  *  @brief 设备列表
  */
-extern  NSMutableArray *lee_globalAduroDevicesArray;
+extern NSMutableArray *lee_globalAduroDevicesArray;
 /**
  *  @brief 分组列表
  */

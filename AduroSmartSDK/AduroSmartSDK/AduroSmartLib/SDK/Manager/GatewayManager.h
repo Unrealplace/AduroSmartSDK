@@ -51,4 +51,22 @@
 -(void)resetGatewayWithPwd:(NSString *)password andCompletionHandler:(LeeGatewayStatusBlock)completionHandler;
 
 
+/**
+ 设置网关时间
+
+ @param completionHandler 完成回调
+ */
+-(void)setGatewayTimeandCompletionHandler:(LeeGatewayStatusBlock)completionHandler;
+
+/**
+ 设置网关远端服务器域名
+
+ @param domain 域名
+ @param completionHandler 设置完成回调
+ */
+-(void)setGatewayServer:(NSString*)domain andCompletionHandler:(LeeGatewayStatusBlock)completionHandler;
+
+//-(void)getSourceList
+
+
 @end

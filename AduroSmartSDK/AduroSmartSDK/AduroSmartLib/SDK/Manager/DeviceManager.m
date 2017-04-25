@@ -12,8 +12,8 @@
 
 @interface DeviceManager(){
     
-    GetDevicesBlock _udpDevices;
-    GetDevicesBlock _mqttDevices;
+    LeeGetDevicesBlock _udpDevices;
+    LeeGetDevicesBlock _mqttDevices;
 }
 @end
 @implementation DeviceManager
@@ -45,13 +45,13 @@
 
     
 }
--(void)findNewDevices:(GetDevicesBlock)devices{
+-(void)findNewDevices:(LeeGetDevicesBlock)devices{
     _udpDevices = devices;
     [self sendData:nil];
     
 
 }
--(void)getAllDevices:(GetDevicesBlock)devices{
+-(void)getAllDevices:(LeeGetDevicesBlock)devices{
     _mqttDevices = devices;
     [self sendData:nil];
 

@@ -46,7 +46,6 @@
     
 
     self.tcpManager = [LeeTCPClientManager sharedManager];
-    
     [self.tcpManager startTCPClientWithHost:@"192.168.1.2" andPort:8888];
     
     

@@ -73,7 +73,6 @@
     
 }
 + (NSString *)getWifiName
-
 {
     
     NSString *wifiName = nil;

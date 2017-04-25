@@ -28,8 +28,8 @@
     //数据内容根据数据内容定要进行转义
     NSData * tranlateData   = [NSData TranlateData:deviceData];
     //数据长度2个字节
-    int      dataLen    =   (int)tranlateData.length;
-    NSData * lenData    =   [NSData get2BDataFromInt:dataLen];
+    int      dataLen        = (int)tranlateData.length;
+    NSData * lenData        = [NSData get2BDataFromInt:dataLen];
     
     //////////////拼接crc////////////////
     [crcData appendData:dirdectionData];
@@ -56,7 +56,8 @@
 }
 
 //1.获取网关配置信息 数据内容为空 包长 0x00
-//2.获取用户列表     数据内容为空
+//2.获取用户列表    数据内容为空 包长 0x00
+
 
 
 @end

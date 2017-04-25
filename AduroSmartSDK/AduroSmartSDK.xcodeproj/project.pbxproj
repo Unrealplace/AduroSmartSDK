@@ -72,7 +72,16 @@
 		FA11183A1EA70926005A3DE9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1118391EA70926005A3DE9 /* Reachability.m */; };
 		FA5A1F981EA79A96004C453C /* AduroSmartSDK+AnalysisData.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5A1F971EA79A96004C453C /* AduroSmartSDK+AnalysisData.m */; };
 		FA5A1F9B1EA7B213004C453C /* AduroDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5A1F9A1EA7B213004C453C /* AduroDataTool.m */; };
-		FAA0A4651EA9A8B700B49C4E /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0A4641EA9A8B700B49C4E /* UserModel.m */; };
+		FA64B3B11EADD00400F54D49 /* AduroGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64B3B01EADD00400F54D49 /* AduroGroup.m */; };
+		FA64B3B41EADD03300F54D49 /* AduroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64B3B31EADD03300F54D49 /* AduroScene.m */; };
+		FA64B3B71EADD0E300F54D49 /* GroupManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64B3B61EADD0E300F54D49 /* GroupManager.m */; };
+		FA64B3BA1EADD0F100F54D49 /* SceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64B3B91EADD0F100F54D49 /* SceneManager.m */; };
+		FA64B3BD1EADD51200F54D49 /* AduroTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64B3BC1EADD51200F54D49 /* AduroTask.m */; };
+		FA64B3C01EADD52900F54D49 /* TaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64B3BF1EADD52900F54D49 /* TaskManager.m */; };
+		FA64B3C31EADDD7400F54D49 /* LeeFTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64B3C21EADDD7400F54D49 /* LeeFTPManager.m */; };
+		FA64B3C61EAED84600F54D49 /* AduroSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64B3C51EAED84600F54D49 /* AduroSourceList.m */; };
+		FA64B3CC1EAF3B1A00F54D49 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64B3CB1EAF3B1A00F54D49 /* UserManager.m */; };
+		FA64B3CF1EAF3B5200F54D49 /* AduroUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64B3CE1EAF3B5200F54D49 /* AduroUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -202,8 +211,26 @@
 		FA5A1F971EA79A96004C453C /* AduroSmartSDK+AnalysisData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AduroSmartSDK+AnalysisData.m"; sourceTree = "<group>"; };
 		FA5A1F991EA7B213004C453C /* AduroDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AduroDataTool.h; sourceTree = "<group>"; };
 		FA5A1F9A1EA7B213004C453C /* AduroDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AduroDataTool.m; sourceTree = "<group>"; };
-		FAA0A4631EA9A8B700B49C4E /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
-		FAA0A4641EA9A8B700B49C4E /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		FA64B3AF1EADD00400F54D49 /* AduroGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AduroGroup.h; sourceTree = "<group>"; };
+		FA64B3B01EADD00400F54D49 /* AduroGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AduroGroup.m; sourceTree = "<group>"; };
+		FA64B3B21EADD03300F54D49 /* AduroScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AduroScene.h; sourceTree = "<group>"; };
+		FA64B3B31EADD03300F54D49 /* AduroScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AduroScene.m; sourceTree = "<group>"; };
+		FA64B3B51EADD0E300F54D49 /* GroupManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupManager.h; sourceTree = "<group>"; };
+		FA64B3B61EADD0E300F54D49 /* GroupManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupManager.m; sourceTree = "<group>"; };
+		FA64B3B81EADD0F100F54D49 /* SceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneManager.h; sourceTree = "<group>"; };
+		FA64B3B91EADD0F100F54D49 /* SceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneManager.m; sourceTree = "<group>"; };
+		FA64B3BB1EADD51200F54D49 /* AduroTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AduroTask.h; sourceTree = "<group>"; };
+		FA64B3BC1EADD51200F54D49 /* AduroTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AduroTask.m; sourceTree = "<group>"; };
+		FA64B3BE1EADD52900F54D49 /* TaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskManager.h; sourceTree = "<group>"; };
+		FA64B3BF1EADD52900F54D49 /* TaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskManager.m; sourceTree = "<group>"; };
+		FA64B3C11EADDD7400F54D49 /* LeeFTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeFTPManager.h; sourceTree = "<group>"; };
+		FA64B3C21EADDD7400F54D49 /* LeeFTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeFTPManager.m; sourceTree = "<group>"; };
+		FA64B3C41EAED84600F54D49 /* AduroSourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AduroSourceList.h; sourceTree = "<group>"; };
+		FA64B3C51EAED84600F54D49 /* AduroSourceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AduroSourceList.m; sourceTree = "<group>"; };
+		FA64B3CA1EAF3B1A00F54D49 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		FA64B3CB1EAF3B1A00F54D49 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		FA64B3CD1EAF3B5200F54D49 /* AduroUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AduroUser.h; sourceTree = "<group>"; };
+		FA64B3CE1EAF3B5200F54D49 /* AduroUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AduroUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,12 +318,20 @@
 				FA084A791E9E5EAD009B98AE /* AduroDevice.m */,
 				FA084A811E9F09BE009B98AE /* AduroGateway.h */,
 				FA084A821E9F09BE009B98AE /* AduroGateway.m */,
-				FA1118351EA6F1E4005A3DE9 /* NetTypeModel.h */,
-				FA1118361EA6F1E4005A3DE9 /* NetTypeModel.m */,
+				FA64B3AF1EADD00400F54D49 /* AduroGroup.h */,
+				FA64B3B01EADD00400F54D49 /* AduroGroup.m */,
+				FA64B3B21EADD03300F54D49 /* AduroScene.h */,
+				FA64B3B31EADD03300F54D49 /* AduroScene.m */,
+				FA64B3BB1EADD51200F54D49 /* AduroTask.h */,
+				FA64B3BC1EADD51200F54D49 /* AduroTask.m */,
+				FA64B3CD1EAF3B5200F54D49 /* AduroUser.h */,
+				FA64B3CE1EAF3B5200F54D49 /* AduroUser.m */,
+				FA64B3C41EAED84600F54D49 /* AduroSourceList.h */,
+				FA64B3C51EAED84600F54D49 /* AduroSourceList.m */,
 				FA5A1F991EA7B213004C453C /* AduroDataTool.h */,
 				FA5A1F9A1EA7B213004C453C /* AduroDataTool.m */,
-				FAA0A4631EA9A8B700B49C4E /* UserModel.h */,
-				FAA0A4641EA9A8B700B49C4E /* UserModel.m */,
+				FA1118351EA6F1E4005A3DE9 /* NetTypeModel.h */,
+				FA1118361EA6F1E4005A3DE9 /* NetTypeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,6 +343,14 @@
 				FA084A761E9E5DD6009B98AE /* DeviceManager.m */,
 				FA084ACF1E9F9C0B009B98AE /* GatewayManager.h */,
 				FA084AD01E9F9C0B009B98AE /* GatewayManager.m */,
+				FA64B3B51EADD0E300F54D49 /* GroupManager.h */,
+				FA64B3B61EADD0E300F54D49 /* GroupManager.m */,
+				FA64B3B81EADD0F100F54D49 /* SceneManager.h */,
+				FA64B3B91EADD0F100F54D49 /* SceneManager.m */,
+				FA64B3BE1EADD52900F54D49 /* TaskManager.h */,
+				FA64B3BF1EADD52900F54D49 /* TaskManager.m */,
+				FA64B3CA1EAF3B1A00F54D49 /* UserManager.h */,
+				FA64B3CB1EAF3B1A00F54D49 /* UserManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -338,6 +381,8 @@
 				FA084D1A1EA2016D009B98AE /* LeeMQTTServerManager.m */,
 				FA084A601E9E2785009B98AE /* LeeMQTTClientManager.h */,
 				FA084A611E9E2785009B98AE /* LeeMQTTClientManager.m */,
+				FA64B3C11EADDD7400F54D49 /* LeeFTPManager.h */,
+				FA64B3C21EADDD7400F54D49 /* LeeFTPManager.m */,
 			);
 			path = CommandSDK;
 			sourceTree = "<group>";
@@ -609,6 +654,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA084A401E9E2623009B98AE /* AduroAsyncSocket.m in Sources */,
+				FA64B3C31EADDD7400F54D49 /* LeeFTPManager.m in Sources */,
 				FA084A701E9E5B5C009B98AE /* ASBaseNavigationController.m in Sources */,
 				FA084A0A1E9E261B009B98AE /* AduroPingFoundation.m in Sources */,
 				FA084A011E9E261B009B98AE /* AduroLocalConnection.m in Sources */,
@@ -622,16 +668,20 @@
 				FA084A831E9F09BE009B98AE /* AduroGateway.m in Sources */,
 				FA1118371EA6F1E4005A3DE9 /* NetTypeModel.m in Sources */,
 				FA084A3E1E9E2623009B98AE /* AduroGCDAsyncUdpSocket.m in Sources */,
-				FAA0A4651EA9A8B700B49C4E /* UserModel.m in Sources */,
+				FA64B3CC1EAF3B1A00F54D49 /* UserManager.m in Sources */,
+				FA64B3C01EADD52900F54D49 /* TaskManager.m in Sources */,
 				FA084A091E9E261B009B98AE /* AduroReachStateWWAN.m in Sources */,
 				FA084A771E9E5DD6009B98AE /* DeviceManager.m in Sources */,
+				FA64B3B41EADD03300F54D49 /* AduroScene.m in Sources */,
 				FA084A451E9E2623009B98AE /* mosquitto.c in Sources */,
 				FA084A3F1E9E2623009B98AE /* README.markdown in Sources */,
 				FA084A061E9E261B009B98AE /* AduroReachStateUnloaded.m in Sources */,
 				FA084D181EA20156009B98AE /* LeeTCPServerManager.m in Sources */,
+				FA64B3CF1EAF3B5200F54D49 /* AduroUser.m in Sources */,
 				FA5A1F981EA79A96004C453C /* AduroSmartSDK+AnalysisData.m in Sources */,
 				FA084A4D1E9E2623009B98AE /* time_mosq.c in Sources */,
 				FA084A7A1E9E5EAD009B98AE /* AduroDevice.m in Sources */,
+				FA64B3C61EAED84600F54D49 /* AduroSourceList.m in Sources */,
 				FA084A411E9E2623009B98AE /* AduroAsyncUdpSocket.m in Sources */,
 				FA084A731E9E5B5C009B98AE /* DeviceViewController.m in Sources */,
 				FA084A4E1E9E2623009B98AE /* tls_mosq.c in Sources */,
@@ -641,9 +691,13 @@
 				FA084A461E9E2623009B98AE /* net_mosq.c in Sources */,
 				FA084A491E9E2623009B98AE /* read_handle_shared.c in Sources */,
 				FA084A5C1E9E26A7009B98AE /* NSString+GetIPAddress.m in Sources */,
+				FA64B3BD1EADD51200F54D49 /* AduroTask.m in Sources */,
 				FA084A081E9E261B009B98AE /* AduroReachStateWIFI.m in Sources */,
+				FA64B3B11EADD00400F54D49 /* AduroGroup.m in Sources */,
 				FA0849E21E9E25F8009B98AE /* YXMFTPManager.m in Sources */,
+				FA64B3BA1EADD0F100F54D49 /* SceneManager.m in Sources */,
 				FA084A431E9E2623009B98AE /* memory_mosq.c in Sources */,
+				FA64B3B71EADD0E300F54D49 /* GroupManager.m in Sources */,
 				FA084D1B1EA2016D009B98AE /* LeeMQTTServerManager.m in Sources */,
 				FA11183A1EA70926005A3DE9 /* Reachability.m in Sources */,
 				FA084A0B1E9E261B009B98AE /* AduroPingHelper.m in Sources */,

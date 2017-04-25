@@ -47,7 +47,7 @@
 
 -(void)initGlobalData{
     self.netModelManager = [[NetTypeModel alloc] init];
-    [self addObserver:self forKeyPath:@"self.netModelManager.netModel" options: NSKeyValueObservingOptionNew context:nil];
+    [self.netModelManager addObserver:self forKeyPath:@"netModel" options: NSKeyValueObservingOptionNew context:nil];
 }
 -(void)startUDPClient{
     
@@ -144,7 +144,7 @@
  */
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
 
-    if ([keyPath isEqualToString:@"self.netModelManager.netModel"]) {
+    if ([keyPath isEqualToString:@"netModel"]) {
         NetType statue = [[change valueForKey:@"new"] intValue];
         switch (statue) {
             case NetTypeLocal:{
