@@ -7,6 +7,8 @@
 //
 
 #import "GroupManager.h"
+#import "AduroGCDAsyncSocket.h"
+#import "AduroGCDAsyncUdpSocket.h"
 #import "AduroGroup.h"
 
 @implementation GroupManager

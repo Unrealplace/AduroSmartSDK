@@ -7,6 +7,8 @@
 //
 
 #import "TaskManager.h"
+#import "AduroGCDAsyncSocket.h"
+#import "AduroGCDAsyncUdpSocket.h"
 #import "AduroTask.h"
 
 @implementation TaskManager

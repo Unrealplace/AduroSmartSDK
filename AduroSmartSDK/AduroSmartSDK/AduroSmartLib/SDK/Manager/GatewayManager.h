@@ -24,6 +24,15 @@
 -(void)searchGateways:(LeeGatewaysInLanBlock)gateways;
 
 /**
+ 获取网关配置信息
+
+ @param gatewayNum 网关编码
+ @param completionHandler 成功的反馈
+ */
+-(void)getGatewayConfigue:(NSString*)gatewayNum andCompletionHandler:(LeeGatewayStatusBlock)completionHandler;
+
+
+/**
  连接网关
  @param gateway 网关
  @param completionHandler 连接网关回调
@@ -66,7 +75,6 @@
  */
 -(void)setGatewayServer:(NSString*)domain andCompletionHandler:(LeeGatewayStatusBlock)completionHandler;
 
-//-(void)getSourceList
 
 
 @end

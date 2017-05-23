@@ -8,8 +8,11 @@
 
 #import "GatewayManager.h"
 #import "AduroGateway.h"
+#import "AduroGCDAsyncSocket.h"
+#import "AduroGCDAsyncUdpSocket.h"
 #import "LeeUDPClientManager.h"
 #import "LeeMQTTClientManager.h"
+#import "AduroDataTool.h"
 
 @interface GatewayManager(){
     
@@ -130,6 +133,19 @@
     }
     
     [self updateGatewayDatatime:[NSDate date]];
+    
+}
+-(void)getGatewayConfigue:(NSString*)gatewayNum andCompletionHandler:(LeeGatewayStatusBlock)completionHandler{
+
+   NSData* data = [AduroDataTool generateSendDataWithUserNumData:gatewayNum andCommnadData:GATE_CMD_GTW_INF andDeviceData:nil];
+
+    [[LeeUDPClientManager sharedManager] sendData:data andReceiveData:^(id data) {
+
+        
+    } andError:^(NSError *error) {
+        
+    }];
+    
     
 }
 -(void)connectGateway:(NSNotification*)noti{

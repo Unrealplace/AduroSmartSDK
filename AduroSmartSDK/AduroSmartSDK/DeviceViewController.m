@@ -10,6 +10,7 @@
 #import "DeviceManager.h"
 #import "GatewayManager.h"
 #import "AduroGateway.h"
+//#import "AduroDevice.h"
 
 @interface DeviceViewController ()
 
@@ -23,6 +24,8 @@
 @property(nonatomic,strong)UILabel  * sendLabel;
 @property(nonatomic,strong)UILabel  * receiveLable;
 @property(nonatomic,strong)AduroGateway * gateWay;
+@property(nonatomic,strong)UITextField  * TF1;
+@property(nonatomic,strong)UITextField  * TF2;
 
 
 @end
@@ -35,19 +38,19 @@
     self.view.backgroundColor = [UIColor redColor];
     self.title  = @"decice";
     self.udpBtn = [UIButton new];
-    self.udpBtn.frame = CGRectMake(100, 100, 180 , 100);
-    [self.udpBtn setTitle:@"udp device commond" forState:UIControlStateNormal];
+    self.udpBtn.frame = CGRectMake(50, 100, 180 , 80);
+    [self.udpBtn setTitle:@"udp send commond" forState:UIControlStateNormal];
     [self.udpBtn addTarget:self action:@selector(udpBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.udpBtn.backgroundColor = [UIColor purpleColor];
     [self.view addSubview:self.udpBtn];
     
     self.lampLabel  = [UILabel new];
-    self.lampLabel.frame = CGRectMake(100, 220, 90, 30);
+    self.lampLabel.frame = CGRectMake(90, 200, 90, 30);
     self.lampLabel.backgroundColor = [UIColor greenColor];
     [self.view addSubview:self.lampLabel];
     
     self.backCommondLabel  = [UILabel new];
-    self.backCommondLabel.frame = CGRectMake(200, 220, 100, 30);
+    self.backCommondLabel.frame = CGRectMake(200, 200, 120, 30);
     self.backCommondLabel.backgroundColor = [UIColor greenColor];
     [self.view addSubview:self.backCommondLabel];
     
@@ -55,43 +58,37 @@
     self.backCommondLabel.font = [UIFont systemFontOfSize:9];
 
     self.sendLabel  = [UILabel new];
-    self.sendLabel.frame = CGRectMake(60, 220, 40, 30);
+    self.sendLabel.frame = CGRectMake(50, 200, 40, 30);
     self.sendLabel.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:self.sendLabel];
     
     self.receiveLable  = [UILabel new];
-    self.receiveLable.frame = CGRectMake(300, 220, 40, 30);
+    self.receiveLable.frame = CGRectMake(300, 200, 60, 30);
     self.receiveLable.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:self.receiveLable];
     
     self.sendLabel.text = @"send";
     self.receiveLable.text = @"revice";
     
+    self.TF1 = [UITextField new];
+    self.TF2 = [UITextField new];
+    [self.view addSubview:_TF1];
+    [self.view addSubview:_TF2];
+    self.TF1.frame = CGRectMake(50, 240, 200, 30);
+    self.TF2.frame = CGRectMake(50, 275, 200, 30);
+    self.TF1.backgroundColor = [UIColor whiteColor];
+    self.TF2.backgroundColor = [UIColor whiteColor];
     
-    self.mqttBtn = [UIButton new];
-    self.mqttBtn.frame = CGRectMake(100, 260, 100 , 100);
-    [self.mqttBtn setTitle:@"mqtt find" forState:UIControlStateNormal];
-    [self.mqttBtn addTarget:self action:@selector(mqttBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    self.mqttBtn.backgroundColor = [UIColor purpleColor];
-    [self.view addSubview:self.mqttBtn];
-    
-    self.mqttLabel  = [UILabel new];
-    self.mqttLabel.frame = CGRectMake(100, 380, 200, 30);
-    self.mqttLabel.backgroundColor = [UIColor greenColor];
-    [self.view addSubview:self.mqttLabel];
-    
-
     self.gatewayBtn = [UIButton new];
-    self.gatewayBtn.frame = CGRectMake(100, 420, 160 , 100);
+    self.gatewayBtn.frame = CGRectMake(50, 420, 160 , 80);
     [self.gatewayBtn setTitle:@"gateway find" forState:UIControlStateNormal];
     [self.gatewayBtn addTarget:self action:@selector(gatewayBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.gatewayBtn.backgroundColor = [UIColor purpleColor];
     [self.view addSubview:self.gatewayBtn];
     
-    
-    
+
     self.gateLabel  = [UILabel new];
-    self.gateLabel.frame = CGRectMake(100, 530, 200, 30);
+    self.gateLabel.frame = CGRectMake(50, 530, 200, 30);
     self.gateLabel.backgroundColor = [UIColor greenColor];
     [self.view addSubview:self.gateLabel];
     self.gateLabel.font = [UIFont systemFontOfSize:9];
@@ -107,24 +104,35 @@
 
 -(void)udpBtnClick{
 
-    NSString * dataStr = [NSString stringWithFormat:@"good %d",arc4random()];
+//    NSString * dataStr = [NSString stringWithFormat:@"good %d",arc4random()];
+//
+//    self.lampLabel.text =dataStr;
+//    [[DeviceManager sharedManager] findNewDevices:^(AduroDevice *device) {
+//        NSLog(@"%@",[NSThread currentThread]);
+//
+//        dispatch_async(dispatch_get_main_queue(), ^{
+////            self.backCommondLabel.text = device.dataStr;
+//        });
+//        
+//    }];
+    
 
-    self.lampLabel.text =dataStr;
-    [[DeviceManager sharedManager] findNewDevices:^(AduroDevice *device) {
-        NSLog(@"%@",[NSThread currentThread]);
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.backCommondLabel.text = device.data;
-        });
+    
+    [[GatewayManager sharedManager] getGatewayConfigue:@"0011223344556677" andCompletionHandler:^(AduroSmartReturnCode code) {
         
     }];
     
+    
 }
+
+
+
 -(void)mqttBtnClick{
 
     [[DeviceManager sharedManager] getAllDevices:^(AduroDevice *device) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.mqttLabel.text = device.data;
+//            self.mqttLabel.text = device.data;
+            
         });
     }];
 }
@@ -135,7 +143,7 @@
         if (gateways.count >0) {
             dispatch_async(dispatch_get_main_queue(), ^{
 
-                self.gateLabel.text = [NSString stringWithFormat:@"%@:%@",[gateways[0] gatewayName],[gateways[0] gatewayIPv4Address]];
+                self.gateLabel.text = [NSString stringWithFormat:@"%@ %@",[gateways[0] gatewayName],[gateways[0] gatewayIPv4Address]];
                 self.gateWay = gateways[0];
             });
         }
@@ -148,11 +156,12 @@
         DLog(@"link:::%ld",code);
     }];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+
+    [[UIApplication sharedApplication].keyWindow endEditing:YES];
+    
 }
-
 
 
 

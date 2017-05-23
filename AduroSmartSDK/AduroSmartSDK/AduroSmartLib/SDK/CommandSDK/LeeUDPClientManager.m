@@ -7,7 +7,8 @@
 //
 
 #import "LeeUDPClientManager.h"
-
+#import "AduroGCDAsyncSocket.h"
+#import "AduroGCDAsyncUdpSocket.h"
 @interface LeeUDPClientManager()<GCDAsyncUdpSocketDelegate>{
     
     LeeAduroUDPReceiveDataBlock  _receiveDataBlock;
@@ -131,13 +132,11 @@
       fromAddress:(NSData *)address
 withFilterContext:(nullable id)filterContext{
     
-    DLog(@"IP地址:%@,Port:%u",
-          [AduroGCDAsyncUdpSocket hostFromAddress:address],
-          [AduroGCDAsyncUdpSocket portFromAddress:address]);
     self.host    = [AduroGCDAsyncUdpSocket hostFromAddress:address];
     self.udpPort = [AduroGCDAsyncUdpSocket portFromAddress:address];
-    
-    NSDictionary * dataDic = @{@"gateway":data};
+    if ([self.host hasPrefix:@"::"])
+        return;
+    NSDictionary * dataDic = @{Lee_Gateway:data,Lee_GateIP:_host};
     if (_receiveDataBlock) {
         _receiveDataBlock(dataDic);
     }

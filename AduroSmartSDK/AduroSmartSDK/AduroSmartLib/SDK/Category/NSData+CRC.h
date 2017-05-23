@@ -47,7 +47,9 @@
  */
 +(NSData *)get2BDataFromInt:(int)len;
 
-+(NSData*) get1BDataFromInt:(int)len;
++(NSData*)get1BDataFromInt:(int)len;
+
++(NSData*)get8BDataFromString:(NSString*)String;
 
 /**
  NSData 转int 型
@@ -81,4 +83,11 @@
  */
 + (NSString *)ToHex:(int)intData;
 
+/**
+ 16进制字符串转换成NSdata
+
+ @param hexString 16进制字符串
+ @return NSdata
+ */
++(NSData *)hexStringToData:(NSString *)hexString;
 @end

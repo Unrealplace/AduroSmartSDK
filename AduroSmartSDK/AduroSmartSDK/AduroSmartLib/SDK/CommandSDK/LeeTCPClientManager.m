@@ -7,6 +7,8 @@
 //
 
 #import "LeeTCPClientManager.h"
+#import "AduroGCDAsyncSocket.h"
+#import "AduroGCDAsyncUdpSocket.h"
 
 @interface LeeTCPClientManager()<GCDAsyncSocketDelegate>{
 

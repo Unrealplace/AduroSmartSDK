@@ -7,6 +7,8 @@
 //
 
 #import "UserManager.h"
+#import "AduroGCDAsyncSocket.h"
+#import "AduroGCDAsyncUdpSocket.h"
 #import "AduroUser.h"
 
 @implementation UserManager

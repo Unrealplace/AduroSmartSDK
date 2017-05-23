@@ -7,10 +7,10 @@
 //
 
 #import "LeeCommonObject.h"
+
 @interface AduroDevice : LeeCommonObject
 
-@property(nonatomic,copy)NSString * data;
-
+@property(nonatomic,copy)NSString * dataStr;
 //调关灯，色温灯，彩色灯，门磁，pir
 @property(nonatomic,copy)NSString * deviceName;//设备名
 @property (nonatomic,assign)AduroDeviceType deviceTypeID; //设备种类,见枚举DeviceTypeID

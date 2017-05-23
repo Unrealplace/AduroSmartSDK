@@ -7,8 +7,11 @@
 //
 
 #import "DeviceManager.h"
+#import "AduroGCDAsyncSocket.h"
+#import "AduroGCDAsyncUdpSocket.h"
 #import "LeeUDPClientManager.h"
 #import "LeeMQTTClientManager.h"
+#import "AduroDevice.h"
 
 @interface DeviceManager(){
     
@@ -30,6 +33,7 @@
 -(instancetype)init{
 
     if (self = [super init]) {
+        
         [Lee_Notification addObserver:self selector:@selector(localOrRemote) name:Lee_Local_or_Remote object:nil];
         [Lee_Notification addObserver:self selector:@selector(findDevice:) name:Lee_FIND_DEVICE object:nil];
         
@@ -68,8 +72,8 @@
             NSString * dataStr = [NSString stringWithFormat:@"hello mqtt %d",arc4random()];
             [[LeeMQTTClientManager sharedManager] mqttSendCommandData:[dataStr dataUsingEncoding:NSUTF8StringEncoding] andReceiveDataBlock:^(id data) {
                 
-                AduroDevice *dev = [AduroDevice new];
-                dev.data  = [[NSString alloc] initWithData:data[@"data"] encoding:NSUTF8StringEncoding];
+                AduroDevice *dev = [[AduroDevice alloc] init];
+                dev.dataStr  = [[NSString alloc] initWithData:data[@"data"] encoding:NSUTF8StringEncoding];
                 if (_mqttDevices) {
                     _mqttDevices(dev);
                 }
@@ -78,16 +82,17 @@
             }];
         }
             break;
+            
         case NetTypeLocal:{
             MLog(@"局域网在发送数据");
             NSString * dataStr = [NSString stringWithFormat:@"good %d",arc4random()];
             [[LeeUDPClientManager sharedManager] sendData:[dataStr dataUsingEncoding:NSUTF8StringEncoding] andReceiveData:^(id data) {
                 NSData * datastr = data[@"gateway"];
-                if ([[[NSString alloc] initWithData:datastr encoding:NSUTF8StringEncoding] hasPrefix:@"oliver"])   {
+//                if ([[[NSString alloc] initWithData:datastr encoding:NSUTF8StringEncoding] hasPrefix:@"oliver"])   {
                     AduroDevice * dev = [[AduroDevice alloc] init];
-                    dev.data =[[NSString alloc] initWithData:datastr encoding:NSUTF8StringEncoding];
+                    dev.dataStr =[[NSString alloc] initWithData:datastr encoding:NSUTF8StringEncoding];
                     _udpDevices(dev);
-                }
+//                }
                 
             } andError:^(NSError *error) {
                 
@@ -95,14 +100,14 @@
         }
             break;
         case NetTypeUnreachble:{
-            
+            MLog(@"网络不可用");
+  
         }
             break;
             
         default:
             break;
     }
-    //    IsRemoteConnect = !IsRemoteConnect;
-    
+
 }
 @end

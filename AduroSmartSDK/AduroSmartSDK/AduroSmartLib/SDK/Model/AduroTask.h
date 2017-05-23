@@ -18,7 +18,7 @@
 //事件触发
 @property(nonatomic,assign)UInt16 deviceID;//事件触发的设备id
 @property(nonatomic,assign)UInt16 deviceValue;//触发任务的状态：0关，1开，pir时候，1有人。
-@property(nonatomic,assign)Byte   devOperator;//
+@property(nonatomic,assign)Byte   devOperator;//操作符
 
 //时间触发
 @property(nonatomic,assign)Byte taskWeek;//周期，b0 周一，。。。

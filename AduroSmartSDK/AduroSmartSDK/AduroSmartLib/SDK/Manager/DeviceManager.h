@@ -8,10 +8,13 @@
 
 
 #import "LeeCommonObject.h"
-#import "AduroDevice.h"
+
+@class AduroDevice;
+
 typedef void(^LeeGetDevicesBlock)(AduroDevice *device);
 
 @interface DeviceManager : LeeCommonObject
+
 +(DeviceManager*)sharedManager;
 
 

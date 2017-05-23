@@ -7,6 +7,8 @@
 //
 
 #import "AduroSmartSDK.h"
+#import "AduroGCDAsyncSocket.h"
+#import "AduroGCDAsyncUdpSocket.h"
 #import "AduroSmartSDK+AnalysisData.h"
 #import "LeeUDPClientManager.h"
 #import "LeeMQTTClientManager.h"
@@ -65,7 +67,7 @@
 -(void)startMQTTClient{
     
     _mqttClient       = [LeeMQTTClientManager sharedManager];
-    _mqttClient.topic = @"B9A6ED6F2DE115BC";
+    _mqttClient.topic = @"B9A6ED6F2DE115BCfff";
     if (![_mqttClient mqttConnect]) {
         _mqttClient.delegate = self;
         _mqttClient.host     = Lee_MQTT_HOST;
@@ -95,15 +97,18 @@
     [Lee_Notification addObserver:self selector:@selector(networkChanged:)name:kReachabilityChangedNotification   object:nil];
     [Lee_Notification addObserver:self selector:@selector(tcpEnterBackGround) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [Lee_Notification addObserver:self selector:@selector(tcpEnterForGround) name:UIApplicationWillEnterForegroundNotification object:nil];
+
     
 }
 -(void)tcpEnterBackGround{
-
+    [Lee_Userdefault setValue:@"background" forKey:Lee_Stau];
+    [Lee_Userdefault synchronize];
     
 }
 -(void)tcpEnterForGround{
 
-
+    [Lee_Userdefault setValue:@"foreground" forKey:Lee_Stau];
+    [Lee_Userdefault synchronize];
     
 }
 
@@ -121,17 +126,14 @@
     switch (status){
            
         case NotReachable:{
-            NETLog(@"网络不可用");
             self.netModelManager.netModel = NetTypeUnreachble;
             break;
         }
         case ReachableViaWWAN:{
-            NETLog(@"移动网络上网");
             self.netModelManager.netModel = NetTypeRemote;
             break;
         }
         case ReachableViaWiFi:{
-            NETLog(@"wifi网络上网");
             self.netModelManager.netModel = NetTypeRemote;
             break;
         }
@@ -149,18 +151,18 @@
         switch (statue) {
             case NetTypeLocal:{
                 GlobalConnectStatus = NetTypeLocal;
-                NETLog(@"local...net");
+                NETLog(@"local.net.connect");
                 [Lee_Notification postNotificationName:Lee_Local_or_Remote object:nil];
             }
                 break;
             case NetTypeRemote:{
                 GlobalConnectStatus = NetTypeRemote;
-                NETLog(@"remote...net");
+                NETLog(@"remote.net.connect");
                 [Lee_Notification postNotificationName:Lee_Local_or_Remote object:nil];
             }
                 break;
             case NetTypeUnreachble:{
-                NETLog(@"unreachble...net");
+                NETLog(@"unreachble.net.connect");
                 GlobalConnectStatus = NetTypeUnreachble;
             }
                 break;

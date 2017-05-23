@@ -7,6 +7,8 @@
 //
 
 #import "SceneManager.h"
+#import "AduroGCDAsyncSocket.h"
+#import "AduroGCDAsyncUdpSocket.h"
 #import "AduroScene.h"
 
 @implementation SceneManager

@@ -10,7 +10,19 @@
 
 @interface AduroDataTool : LeeCommonObject
 
-+(NSData*)getTheData:(NSData*)data;
+
+/**
+ <#Description#>
+
+ @param data <#data description#>
+ */
++(NSData*)analysisGateData:(NSData*)data;
+
+/**
+ 解析数据
+ @param data 网关数据
+ */
++(NSData*)analysisLocalData:(NSMutableData*)data;
 
 
 /**
