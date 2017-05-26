@@ -23,7 +23,6 @@
             DLog(@"%@",gateStr);
             NSData   * tranlateData = [AduroDataTool analysisGateData:gatedata];
             NSString * newGateStr   = [[NSString alloc] initWithData:tranlateData encoding:NSUTF8StringEncoding];
-
             NSArray * gateArr   = [newGateStr componentsSeparatedByString:@" "];
             NSArray * IDArr     = [gateArr[0] componentsSeparatedByString:@"-"];
             AduroGateway * gateway = [[AduroGateway alloc] init];
@@ -34,12 +33,11 @@
             [Lee_Notification postNotificationName:Lee_GET_GATEWAY object:gateway];
         }else{
             DLog(@"局域网控制指令反馈的数据::%@",gatedata);
-            NSData* backData = [AduroDataTool analysisLocalData:gatedata.mutableCopy];
+            NSData* backData  = [AduroDataTool analysisLocalData:gatedata.mutableCopy];
             NSData * typeData = [backData subdataWithRange:NSMakeRange(9, 2)];
             uint16_t type     = *(int *)[typeData bytes];
             [self analysisDataWith:backData andType:type];
         }
-  
     }else{
     
         DLog(@"解析服务器数据");
