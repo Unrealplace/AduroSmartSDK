@@ -49,17 +49,17 @@
 
     switch (type) {
         case GATE_CMD_GTW_INF :{
-            NSData * devCodeData = [data subdataWithRange:NSMakeRange(0, 8)];
-            NSData * commondSetData = [data subdataWithRange:NSMakeRange(9, 2)];
-            NSData * lengthData  = [data subdataWithRange:NSMakeRange(11, 2)];
-            NSData * crcData   = [data subdataWithRange:NSMakeRange(data.length - 3, 2)];
-            NSData * devData   = [data subdataWithRange:NSMakeRange(13, data.length-4)];
-            NSData * stateData = [devData subdataWithRange:NSMakeRange(0, 1)];
-            NSData * gateNameData = [devData subdataWithRange:NSMakeRange(9, 20)];
-            
-            DLog(@"%@",[[NSString alloc] initWithData:gateNameData encoding:NSUTF8StringEncoding]);
-            
-            [Lee_Notification postNotificationName:Lee_FIND_DEVICE object:nil];
+//            NSData * devCodeData = [data subdataWithRange:NSMakeRange(0, 8)];
+//            NSData * commondSetData = [data subdataWithRange:NSMakeRange(9, 2)];
+//            NSData * lengthData  = [data subdataWithRange:NSMakeRange(11, 2)];
+//            NSData * crcData   = [data subdataWithRange:NSMakeRange(data.length - 3, 2)];
+//            NSData * devData   = [data subdataWithRange:NSMakeRange(13, data.length-4)];
+//            NSData * stateData = [devData subdataWithRange:NSMakeRange(0, 1)];
+//            NSData * gateNameData = [devData subdataWithRange:NSMakeRange(9, 20)];
+//            
+//            DLog(@"%@",[[NSString alloc] initWithData:gateNameData encoding:NSUTF8StringEncoding]);
+//            
+//            [Lee_Notification postNotificationName:Lee_FIND_DEVICE object:nil];
 
         }
             break;
