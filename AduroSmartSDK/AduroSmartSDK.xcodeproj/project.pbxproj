@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B60834311EDFED37003063B4 /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B608342E1EDFED37003063B4 /* DeviceViewController.m */; };
+		B60834321EDFED37003063B4 /* GateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60834301EDFED37003063B4 /* GateViewController.m */; };
+		B60834611EDFEF1B003063B4 /* ASBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B608345C1EDFEF1B003063B4 /* ASBaseNavigationController.m */; };
+		B60834621EDFEF1B003063B4 /* ASBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B608345E1EDFEF1B003063B4 /* ASBaseTabBarController.m */; };
+		B60834631EDFEF1B003063B4 /* ASBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60834601EDFEF1B003063B4 /* ASBaseViewController.m */; };
 		FA0849BF1E9E24D6009B98AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0849BE1E9E24D6009B98AE /* main.m */; };
 		FA0849C21E9E24D6009B98AE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0849C11E9E24D6009B98AE /* AppDelegate.m */; };
 		FA0849C81E9E24D6009B98AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA0849C61E9E24D6009B98AE /* Main.storyboard */; };
@@ -54,11 +59,6 @@
 		FA084A5C1E9E26A7009B98AE /* NSString+GetIPAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = FA084A591E9E26A7009B98AE /* NSString+GetIPAddress.m */; };
 		FA084A5F1E9E2777009B98AE /* LeeUDPClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA084A5E1E9E2777009B98AE /* LeeUDPClientManager.m */; };
 		FA084A621E9E2785009B98AE /* LeeMQTTClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA084A611E9E2785009B98AE /* LeeMQTTClientManager.m */; };
-		FA084A701E9E5B5C009B98AE /* ASBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA084A671E9E5B5C009B98AE /* ASBaseNavigationController.m */; };
-		FA084A711E9E5B5C009B98AE /* ASBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA084A691E9E5B5C009B98AE /* ASBaseTabBarController.m */; };
-		FA084A721E9E5B5C009B98AE /* ASBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA084A6B1E9E5B5C009B98AE /* ASBaseViewController.m */; };
-		FA084A731E9E5B5C009B98AE /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA084A6D1E9E5B5C009B98AE /* DeviceViewController.m */; };
-		FA084A741E9E5B5C009B98AE /* GateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA084A6F1E9E5B5C009B98AE /* GateViewController.m */; };
 		FA084A771E9E5DD6009B98AE /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA084A761E9E5DD6009B98AE /* DeviceManager.m */; };
 		FA084A7A1E9E5EAD009B98AE /* AduroDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = FA084A791E9E5EAD009B98AE /* AduroDevice.m */; };
 		FA084A831E9F09BE009B98AE /* AduroGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = FA084A821E9F09BE009B98AE /* AduroGateway.m */; };
@@ -85,6 +85,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B608342D1EDFED37003063B4 /* DeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceViewController.h; path = ../DeviceViewController.h; sourceTree = "<group>"; };
+		B608342E1EDFED37003063B4 /* DeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceViewController.m; path = ../DeviceViewController.m; sourceTree = "<group>"; };
+		B608342F1EDFED37003063B4 /* GateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GateViewController.h; path = ../GateViewController.h; sourceTree = "<group>"; };
+		B60834301EDFED37003063B4 /* GateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GateViewController.m; path = ../GateViewController.m; sourceTree = "<group>"; };
+		B608345B1EDFEF1B003063B4 /* ASBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASBaseNavigationController.h; sourceTree = "<group>"; };
+		B608345C1EDFEF1B003063B4 /* ASBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASBaseNavigationController.m; sourceTree = "<group>"; };
+		B608345D1EDFEF1B003063B4 /* ASBaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASBaseTabBarController.h; sourceTree = "<group>"; };
+		B608345E1EDFEF1B003063B4 /* ASBaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASBaseTabBarController.m; sourceTree = "<group>"; };
+		B608345F1EDFEF1B003063B4 /* ASBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASBaseViewController.h; sourceTree = "<group>"; };
+		B60834601EDFEF1B003063B4 /* ASBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASBaseViewController.m; sourceTree = "<group>"; };
 		FA0849BA1E9E24D6009B98AE /* AduroSmartSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AduroSmartSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0849BE1E9E24D6009B98AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FA0849C01E9E24D6009B98AE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -175,16 +185,6 @@
 		FA084A5E1E9E2777009B98AE /* LeeUDPClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LeeUDPClientManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FA084A601E9E2785009B98AE /* LeeMQTTClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeMQTTClientManager.h; sourceTree = "<group>"; };
 		FA084A611E9E2785009B98AE /* LeeMQTTClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeMQTTClientManager.m; sourceTree = "<group>"; };
-		FA084A661E9E5B5B009B98AE /* ASBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASBaseNavigationController.h; path = ../ASBaseNavigationController.h; sourceTree = "<group>"; };
-		FA084A671E9E5B5C009B98AE /* ASBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASBaseNavigationController.m; path = ../ASBaseNavigationController.m; sourceTree = "<group>"; };
-		FA084A681E9E5B5C009B98AE /* ASBaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASBaseTabBarController.h; path = ../ASBaseTabBarController.h; sourceTree = "<group>"; };
-		FA084A691E9E5B5C009B98AE /* ASBaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASBaseTabBarController.m; path = ../ASBaseTabBarController.m; sourceTree = "<group>"; };
-		FA084A6A1E9E5B5C009B98AE /* ASBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASBaseViewController.h; path = ../ASBaseViewController.h; sourceTree = "<group>"; };
-		FA084A6B1E9E5B5C009B98AE /* ASBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASBaseViewController.m; path = ../ASBaseViewController.m; sourceTree = "<group>"; };
-		FA084A6C1E9E5B5C009B98AE /* DeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceViewController.h; path = ../DeviceViewController.h; sourceTree = "<group>"; };
-		FA084A6D1E9E5B5C009B98AE /* DeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceViewController.m; path = ../DeviceViewController.m; sourceTree = "<group>"; };
-		FA084A6E1E9E5B5C009B98AE /* GateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GateViewController.h; path = ../GateViewController.h; sourceTree = "<group>"; };
-		FA084A6F1E9E5B5C009B98AE /* GateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GateViewController.m; path = ../GateViewController.m; sourceTree = "<group>"; };
 		FA084A751E9E5DD6009B98AE /* DeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
 		FA084A761E9E5DD6009B98AE /* DeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DeviceManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FA084A781E9E5EAD009B98AE /* AduroDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AduroDevice.h; sourceTree = "<group>"; };
@@ -244,6 +244,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B608345A1EDFEF00003063B4 /* BaseController */ = {
+			isa = PBXGroup;
+			children = (
+				B608345B1EDFEF1B003063B4 /* ASBaseNavigationController.h */,
+				B608345C1EDFEF1B003063B4 /* ASBaseNavigationController.m */,
+				B608345D1EDFEF1B003063B4 /* ASBaseTabBarController.h */,
+				B608345E1EDFEF1B003063B4 /* ASBaseTabBarController.m */,
+				B608345F1EDFEF1B003063B4 /* ASBaseViewController.h */,
+				B60834601EDFEF1B003063B4 /* ASBaseViewController.m */,
+			);
+			path = BaseController;
+			sourceTree = "<group>";
+		};
+		B60834641EDFEF2E003063B4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B608342D1EDFED37003063B4 /* DeviceViewController.h */,
+				B608342E1EDFED37003063B4 /* DeviceViewController.m */,
+				B608342F1EDFED37003063B4 /* GateViewController.h */,
+				B60834301EDFED37003063B4 /* GateViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		FA0849B11E9E24D6009B98AE = {
 			isa = PBXGroup;
 			children = (
@@ -263,8 +287,8 @@
 		FA0849BC1E9E24D6009B98AE /* AduroSmartSDK */ = {
 			isa = PBXGroup;
 			children = (
-				FA084A851E9F1050009B98AE /* Controllers */,
-				FA084A841E9F102F009B98AE /* BaseController */,
+				B60834641EDFEF2E003063B4 /* Controllers */,
+				B608345A1EDFEF00003063B4 /* BaseController */,
 				FA0849D51E9E2525009B98AE /* AduroSmartLib */,
 				FA0849C01E9E24D6009B98AE /* AppDelegate.h */,
 				FA0849C11E9E24D6009B98AE /* AppDelegate.m */,
@@ -556,30 +580,6 @@
 			path = MQTTKit;
 			sourceTree = "<group>";
 		};
-		FA084A841E9F102F009B98AE /* BaseController */ = {
-			isa = PBXGroup;
-			children = (
-				FA084A661E9E5B5B009B98AE /* ASBaseNavigationController.h */,
-				FA084A671E9E5B5C009B98AE /* ASBaseNavigationController.m */,
-				FA084A681E9E5B5C009B98AE /* ASBaseTabBarController.h */,
-				FA084A691E9E5B5C009B98AE /* ASBaseTabBarController.m */,
-				FA084A6A1E9E5B5C009B98AE /* ASBaseViewController.h */,
-				FA084A6B1E9E5B5C009B98AE /* ASBaseViewController.m */,
-			);
-			path = BaseController;
-			sourceTree = "<group>";
-		};
-		FA084A851E9F1050009B98AE /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				FA084A6C1E9E5B5C009B98AE /* DeviceViewController.h */,
-				FA084A6D1E9E5B5C009B98AE /* DeviceViewController.m */,
-				FA084A6E1E9E5B5C009B98AE /* GateViewController.h */,
-				FA084A6F1E9E5B5C009B98AE /* GateViewController.m */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -655,7 +655,6 @@
 			files = (
 				FA084A401E9E2623009B98AE /* AduroAsyncSocket.m in Sources */,
 				FA64B3C31EADDD7400F54D49 /* LeeFTPManager.m in Sources */,
-				FA084A701E9E5B5C009B98AE /* ASBaseNavigationController.m in Sources */,
 				FA084A0A1E9E261B009B98AE /* AduroPingFoundation.m in Sources */,
 				FA084A011E9E261B009B98AE /* AduroLocalConnection.m in Sources */,
 				FA084D0C1EA1FF84009B98AE /* LeeCommonObject.m in Sources */,
@@ -683,7 +682,6 @@
 				FA084A7A1E9E5EAD009B98AE /* AduroDevice.m in Sources */,
 				FA64B3C61EAED84600F54D49 /* AduroSourceList.m in Sources */,
 				FA084A411E9E2623009B98AE /* AduroAsyncUdpSocket.m in Sources */,
-				FA084A731E9E5B5C009B98AE /* DeviceViewController.m in Sources */,
 				FA084A4E1E9E2623009B98AE /* tls_mosq.c in Sources */,
 				FA084A421E9E2623009B98AE /* logging_mosq.c in Sources */,
 				FA5A1F9B1EA7B213004C453C /* AduroDataTool.m in Sources */,
@@ -694,8 +692,10 @@
 				FA64B3BD1EADD51200F54D49 /* AduroTask.m in Sources */,
 				FA084A081E9E261B009B98AE /* AduroReachStateWIFI.m in Sources */,
 				FA64B3B11EADD00400F54D49 /* AduroGroup.m in Sources */,
+				B60834321EDFED37003063B4 /* GateViewController.m in Sources */,
 				FA0849E21E9E25F8009B98AE /* YXMFTPManager.m in Sources */,
 				FA64B3BA1EADD0F100F54D49 /* SceneManager.m in Sources */,
+				B60834631EDFEF1B003063B4 /* ASBaseViewController.m in Sources */,
 				FA084A431E9E2623009B98AE /* memory_mosq.c in Sources */,
 				FA64B3B71EADD0E300F54D49 /* GroupManager.m in Sources */,
 				FA084D1B1EA2016D009B98AE /* LeeMQTTServerManager.m in Sources */,
@@ -705,7 +705,6 @@
 				FA084A051E9E261B009B98AE /* AduroReachStateLoading.m in Sources */,
 				FA084A4F1E9E2623009B98AE /* util_mosq.c in Sources */,
 				FA084A4A1E9E2623009B98AE /* send_client_mosq.c in Sources */,
-				FA084A711E9E5B5C009B98AE /* ASBaseTabBarController.m in Sources */,
 				FA084A5A1E9E26A7009B98AE /* NSData+AES128.m in Sources */,
 				FA084A521E9E2623009B98AE /* MQTTKit.m in Sources */,
 				FA084A001E9E261B009B98AE /* AduroRealReachability.m in Sources */,
@@ -713,17 +712,18 @@
 				FA084A481E9E2623009B98AE /* read_handle_client.c in Sources */,
 				FA0849C21E9E24D6009B98AE /* AppDelegate.m in Sources */,
 				FA084A5B1E9E26A7009B98AE /* NSData+CRC.m in Sources */,
+				B60834621EDFEF1B003063B4 /* ASBaseTabBarController.m in Sources */,
 				FA084A031E9E261B009B98AE /* AduroFSMStateUtil.m in Sources */,
 				FA084A071E9E261B009B98AE /* AduroReachStateUnReachable.m in Sources */,
 				FA084AD11E9F9C0B009B98AE /* GatewayManager.m in Sources */,
-				FA084A721E9E5B5C009B98AE /* ASBaseViewController.m in Sources */,
 				FA084D151EA20141009B98AE /* LeeUDPServerManager.m in Sources */,
 				FA0849DE1E9E25AF009B98AE /* AduroSmartSDK.m in Sources */,
 				FA084A471E9E2623009B98AE /* read_handle.c in Sources */,
+				B60834611EDFEF1B003063B4 /* ASBaseNavigationController.m in Sources */,
 				FA084A5F1E9E2777009B98AE /* LeeUDPClientManager.m in Sources */,
 				FA0849BF1E9E24D6009B98AE /* main.m in Sources */,
 				FA084A041E9E261B009B98AE /* AduroReachState.m in Sources */,
-				FA084A741E9E5B5C009B98AE /* GateViewController.m in Sources */,
+				B60834311EDFED37003063B4 /* DeviceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
